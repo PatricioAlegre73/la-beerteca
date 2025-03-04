@@ -1,0 +1,113 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.9);
+  background-color: #242424;
+
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Enlaces */
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+/* Body */
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* Asegura alineación vertical */
+  justify-content: center;
+  align-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+/* Títulos */
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  margin-bottom: 0.5em;
+}
+
+/* Botones */
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  border-color: #646cff;
+  box-shadow: 0px 4px 8px rgba(100, 108, 255, 0.4);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 3px solid #646cff;
+}
+
+/* Modo Claro */
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+
+  a:hover {
+    color: #747bff;
+  }
+
+  button {
+    background-color: #f9f9f9;
+    color: #213547;
+  }
+}
+nav {
+  background-color: #1a1a1a;
+  padding: 1rem 2rem; /* Más espacio alrededor */
+  position: fixed; /* Fija la Navbar en la parte superior */
+  top: 0; /* Asegura que esté pegada arriba */
+  left: 0;
+  width: 100%; /* Que ocupe todo el ancho */
+  z-index: 1000; /* Se mantiene sobre otros elementos */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+nav a {
+  margin: 0 15px; /* Más separación entre categorías */
+  font-size: 1.1rem; /* Texto más grande */
+}
+
+.space-x-6 {
+  gap: 2rem; /* Más espacio entre categorías */
+}
+
