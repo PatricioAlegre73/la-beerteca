@@ -1,17 +1,14 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
-const Item = ({ item }) => {
+function Item({ item }) {
   return (
-    <div className="border p-4 rounded shadow-lg">
-      <h3 className="text-xl font-bold">{item.name}</h3>
-      <p className="text-gray-600">{item.brewery_type}</p>
-      {item.website_url && (
-        <a href={item.website_url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
-          Visitar sitio
-        </a>
-      )}
+    <div>
+      <h3>{item.name}</h3>
+      <img src={item.image} alt={item.name} />
+      <p>{item.description}</p>
+      <Link to={`/item/${item.id}`}>Ver detalles</Link>
     </div>
   );
-};
+}
 
 export default Item;

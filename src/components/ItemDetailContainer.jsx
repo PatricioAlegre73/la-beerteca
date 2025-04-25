@@ -1,30 +1,32 @@
-import React, { useEffect, useState } from "react";
+// src/components/ItemDetailContainer.jsx
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { getDoc, doc } from "firebase/firestore";
+import db from "../firebase/db";
 import ItemDetail from "./ItemDetail";
 
 const ItemDetailContainer = () => {
-  const { itemId } = useParams();
-  const [item, setItem] = useState(null);
+  const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { id } = useParams();
 
   useEffect(() => {
-    fetch(`https://api.openbrewerydb.org/v1/breweries/${itemId}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setItem(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error al obtener el detalle:", err);
-        setLoading(false);
-      });
-  }, [itemId]);
+    setLoading(true);
+    const productRef = doc(db, "products", id);
 
-  return (
-    <div className="container mx-auto py-10 text-center">
-      {loading ? <p>Cargando detalles...</p> : <ItemDetail item={item} />}
-    </div>
-  );
+    getDoc(productRef)
+      .then((docSnap) => {
+        if (docSnap.exists()) {
+          setProduct({ id: docSnap.id, ...docSnap.data() });
+        }
+      })
+      .catch((error) => {
+        console.error("Error al obtener producto:", error);
+      })
+      .finally(() => setLoading(false));
+  }, [id]);
+
+  return loading ? <p>Cargando detalles...</p> : <ItemDetail {...product} />;
 };
 
 export default ItemDetailContainer;

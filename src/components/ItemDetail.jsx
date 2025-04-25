@@ -1,20 +1,22 @@
-import React from "react";
+import { useCart } from "../context/CartContext";
+import ItemCount from "./ItemCount";
 
-const ItemDetail = ({ item }) => {
-  if (!item) return <p>Item no encontrado</p>;
+function ItemDetail({ item }) {
+  const { addItem } = useCart();
+
+  const handleAddToCart = (quantity) => {
+    addItem({ ...item, quantity });
+  };
 
   return (
-    <div className="border p-6 rounded shadow-lg text-center">
-      <h2 className="text-2xl font-bold">{item.name}</h2>
-      <p className="text-gray-600">{item.brewery_type}</p>
-      <p>{item.city}, {item.state}</p>
-      {item.website_url && (
-        <a href={item.website_url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
-          Visitar sitio
-        </a>
-      )}
+    <div>
+      <h2>{item.name}</h2>
+      <img src={item.image} alt={item.name} />
+      <p>{item.description}</p>
+      <p>Precio: ${item.price}</p>
+      <ItemCount stock={item.stock} onAdd={handleAddToCart} />
     </div>
   );
-};
+}
 
 export default ItemDetail;

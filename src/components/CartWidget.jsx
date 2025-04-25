@@ -1,18 +1,15 @@
-import React from "react";
-import { ShoppingCart } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
-const CartWidget = () => {
-  const cartCount = 10; 
+function CartWidget() {
+  const { cart } = useCart();
+  const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
-    <Link to="/cart" className="relative">
-      <ShoppingCart className="text-white w-6 h-6" />
-      <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2">
-        {cartCount}
-      </span>
-    </Link>
+    <div>
+      <img src="/cart-icon.png" alt="Carrito" />
+      <span>{totalItems}</span>
+    </div>
   );
-};
+}
 
 export default CartWidget;
