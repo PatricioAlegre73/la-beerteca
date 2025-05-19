@@ -1,20 +1,38 @@
-import { useCart } from "../context/CartContext";
-import ItemCount from "./ItemCount";
+import React, { useContext, useState } from "react";
+import { CartContext } from "../context/CartContext";
 
-function ItemDetail({ item }) {
-  const { addItem } = useCart();
+function ItemDetail({ product }) {
+  const { addItem } = useContext(CartContext);
+  const [quantity, setQuantity] = useState(1);
 
-  const handleAddToCart = (quantity) => {
-    addItem({ ...item, quantity });
+  const handleAdd = () => {
+    addItem(product, quantity);
+    alert(`${quantity} ${product.name} agregado(s) al carrito`);
   };
 
   return (
-    <div>
-      <h2>{item.name}</h2>
-      <img src={item.image} alt={item.name} />
-      <p>{item.description}</p>
-      <p>Precio: ${item.price}</p>
-      <ItemCount stock={item.stock} onAdd={handleAddToCart} />
+    <div style={{ display: "flex", gap: 20, padding: 20 }}>
+      <img src={product.image} alt={product.name} style={{ width: 300, objectFit: "cover" }} />
+      <div>
+        <h2>{product.name}</h2>
+        <p>{product.description}</p>
+        <p><strong>Precio:</strong> ${product.price}</p>
+        <p><strong>Categoría:</strong> {product.category}</p>
+
+        <div>
+          <label>Cantidad: </label>
+          <input
+            type="number"
+            min={1}
+            value={quantity}
+            onChange={(e) => setQuantity(Number(e.target.value))}
+          />
+        </div>
+
+        <button onClick={handleAdd} style={{ marginTop: 10 }}>
+          Agregar al carrito
+        </button>
+      </div>
     </div>
   );
 }

@@ -1,113 +1,75 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.9);
-  background-color: #242424;
-
-  text-rendering: optimizeLegibility;
-  font-synthesis: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Enlaces */
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: none;
-  transition: color 0.3s ease-in-out;
-}
-
-a:hover {
-  color: #535bf2;
-}
-
-/* Body */
+/* Tipografía y fondo general */
 body {
+  font-family: 'Merriweather', serif;
+  background-color: #f4f1ec;
+  color: #3e2f1c;
   margin: 0;
-  display: flex;
-  flex-direction: column; /* Asegura alineación vertical */
-  justify-content: center;
-  align-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
 }
 
-/* Títulos */
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-  margin-bottom: 0.5em;
+h1, h2, h3 {
+  font-family: 'Bitter', serif;
+  color: #5e3c17;
 }
 
-/* Botones */
+/* Cartas estilo cervecería */
+.card {
+  background-color: #fff8f0;
+  border: 2px solid #d1a76c;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(60, 40, 20, 0.2);
+  padding: 1rem;
+  margin: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+/* Botones tipo antiguo */
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #8b5e3c;
   color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  font-family: 'Bitter', serif;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: background-color 0.3s;
 }
 
 button:hover {
-  border-color: #646cff;
-  box-shadow: 0px 4px 8px rgba(100, 108, 255, 0.4);
+  background-color: #a36f47;
 }
 
-button:focus,
-button:focus-visible {
-  outline: 3px solid #646cff;
-}
-
-/* Modo Claro */
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-
-  a:hover {
-    color: #747bff;
-  }
-
-  button {
-    background-color: #f9f9f9;
-    color: #213547;
-  }
-}
-nav {
-  background-color: #1a1a1a;
-  padding: 1rem 2rem; /* Más espacio alrededor */
-  position: fixed; /* Fija la Navbar en la parte superior */
-  top: 0; /* Asegura que esté pegada arriba */
-  left: 0;
-  width: 100%; /* Que ocupe todo el ancho */
-  z-index: 1000; /* Se mantiene sobre otros elementos */
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
+/* Navbar estilo cervecería */
+.navbar {
+  background-color: #3e2f1c;
+  color: #fff8f0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 1rem;
+  padding: 1rem 2rem;
+  border-bottom: 3px solid #d1a76c;
 }
 
-nav a {
-  margin: 0 15px; /* Más separación entre categorías */
-  font-size: 1.1rem; /* Texto más grande */
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
-.space-x-6 {
-  gap: 2rem; /* Más espacio entre categorías */
+.navbar a {
+  color: #fff8f0;
+  text-decoration: none;
+  font-family: 'Bitter', serif;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  color: #d1a76c;
 }
 

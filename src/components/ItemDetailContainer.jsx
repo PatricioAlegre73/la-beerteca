@@ -1,32 +1,34 @@
-// src/components/ItemDetailContainer.jsx
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getDoc, doc } from "firebase/firestore";
-import db from "../firebase/db";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase/config";
 import ItemDetail from "./ItemDetail";
 
-const ItemDetailContainer = () => {
+function ItemDetailContainer() {
+  const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
-  const { id } = useParams();
 
   useEffect(() => {
     setLoading(true);
-    const productRef = doc(db, "products", id);
 
-    getDoc(productRef)
-      .then((docSnap) => {
+    const docRef = doc(db, "items", id);
+    getDoc(docRef)
+      .then(docSnap => {
         if (docSnap.exists()) {
           setProduct({ id: docSnap.id, ...docSnap.data() });
+        } else {
+          setProduct(null);
         }
       })
-      .catch((error) => {
-        console.error("Error al obtener producto:", error);
-      })
+      .catch(console.error)
       .finally(() => setLoading(false));
   }, [id]);
 
-  return loading ? <p>Cargando detalles...</p> : <ItemDetail {...product} />;
-};
+  if (loading) return <h2>Cargando detalle...</h2>;
+  if (!product) return <h2>Producto no encontrado</h2>;
+
+  return <ItemDetail product={product} />;
+}
 
 export default ItemDetailContainer;

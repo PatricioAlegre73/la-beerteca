@@ -1,32 +1,45 @@
-// src/containers/ItemListContainer.jsx
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../firebase/config";
+import ItemList from "./ItemList";
 
-import React, { useState, useEffect } from "react";
-import { db } from "../firebase/db"; // Asegúrate de importar correctamente la instancia de Firestore
-import { collection, getDocs } from "firebase/firestore";
-import ItemList from "../components/ItemList";  // Asegúrate de importar ItemList correctamente
+function ItemListContainer() {
+  const { categoryId } = useParams();
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-const ItemListContainer = ({ category }) => {
-  const [items, setItems] = useState([]);
-  
   useEffect(() => {
-    const fetchItems = async () => {
-      const querySnapshot = await getDocs(collection(db, "products"));
-      const itemsData = querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setItems(itemsData);
-    };
-    
-    fetchItems();
-  }, [category]);
+    setLoading(true);
+
+    const productsRef = collection(db, "items");
+
+    const q = categoryId
+      ? query(productsRef, where("category", "==", categoryId))
+      : productsRef;
+
+    getDocs(q)
+      .then((snapshot) => {
+        const productsData = snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setProducts(productsData);
+      })
+      .catch((error) => {
+        console.error("Error loading products: ", error);
+      })
+      .finally(() => setLoading(false));
+  }, [categoryId]);
+
+  if (loading) return <h2>Cargando productos...</h2>;
 
   return (
-    <div>
-      <h2>Productos</h2>
-      <ItemList items={items} />
-    </div>
+    <>
+      <h2>{categoryId ? `Categoría: ${categoryId}` : "Todos los productos"}</h2>
+      <ItemList products={products} />
+    </>
   );
-};
+}
 
 export default ItemListContainer;

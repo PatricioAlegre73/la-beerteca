@@ -1,14 +1,25 @@
-import { useCart } from "../context/CartContext";
+import React from "react";
+import { Link } from "react-router-dom";
 
-function CartWidget() {
-  const { cart } = useCart();
-  const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
-
+function CartWidget({ count }) {
   return (
-    <div>
-      <img src="/cart-icon.png" alt="Carrito" />
-      <span>{totalItems}</span>
-    </div>
+    <Link to="/cart" style={{ position: "relative", display: "inline-block" }}>
+      🛒
+      {count > 0 && (
+        <span style={{
+          position: "absolute",
+          top: -10,
+          right: -10,
+          background: "red",
+          borderRadius: "50%",
+          color: "white",
+          padding: "2px 6px",
+          fontSize: 12
+        }}>
+          {count}
+        </span>
+      )}
+    </Link>
   );
 }
 

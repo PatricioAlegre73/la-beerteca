@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
-import CartWidget from "./CartWidget";
 
 function Navbar() {
   return (
-    <nav>
+    <nav className="navbar">
+      <h1>La Beerteca</h1>
       <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/category/industriales">Industriales</Link></li>
-        <li><Link to="/category/artesanales">Artesanales</Link></li>
-        <li><Link to="/cart"><CartWidget /></Link></li>
+        <li><Link to="/">Inicio</Link></li>
+        <li><Link to="/categoria/industriales">Industriales</Link></li>
+        <li><Link to="/categoria/artesanales">Artesanales</Link></li>
+        <li><Link to="/categoria/saborizadas">Saborizadas</Link></li>
       </ul>
     </nav>
   );

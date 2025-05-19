@@ -1,17 +1,18 @@
-// src/components/CartItem.jsx
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 
-const CartItem = ({ id, nombre, precio, quantity }) => {
-  const { removeItem } = useContext(CartContext);
+function CartItem({ item }) {
+  const { removeFromCart } = useContext(CartContext);
 
   return (
-    <div>
-      <h4>{nombre}</h4>
-      <p>Precio: ${precio} x {quantity}</p>
-      <button onClick={() => removeItem(id)}>Eliminar</button>
+    <div style={{ borderBottom: "1px solid gray", marginBottom: 10 }}>
+      <h4>{item.name}</h4>
+      <p>
+        Cantidad: {item.quantity} x ${item.price} = ${item.quantity * item.price}
+      </p>
+      <button onClick={() => removeFromCart(item.id)}>Eliminar</button>
     </div>
   );
-};
+}
 
 export default CartItem;
