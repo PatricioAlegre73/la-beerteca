@@ -1,14 +1,13 @@
+import React from "react";
 import { Link } from "react-router-dom";
 
-function Item({ producto }) {
+function Item({ product }) {
   return (
-    <div className="card">
-      <img src={producto.image} alt={producto.name} style={{ width: '100%', borderRadius: '8px' }} />
-      <h3>{producto.name}</h3>
-      <p>{producto.description}</p>
-      <p>${producto.price}</p>
-      <Link to={`/item/${producto.id}`}>
-        <button>Ver detalle</button>
+    <div style={{ border: "1px solid #ddd", borderRadius: 5, padding: 10, width: 200 }}>
+      <Link to={`/item/${product.id}`} style={{ textDecoration: "none", color: "black" }}>
+        <img src={product.image} alt={product.name} style={{ width: "100%", height: 150, objectFit: "cover" }} />
+        <h3>{product.name}</h3>
+        <p>Precio: ${product.price}</p>
       </Link>
     </div>
   );

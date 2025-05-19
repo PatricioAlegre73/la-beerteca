@@ -7,8 +7,6 @@ import Cart from "./components/Cart";
 import CheckoutForm from "./components/CheckoutForm";
 import { CartProvider } from "./context/CartContext";
 
-
-
 function App() {
   return (
     <CartProvider>
