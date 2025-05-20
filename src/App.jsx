@@ -6,6 +6,7 @@ import ItemDetailContainer from "./components/ItemDetailContainer";
 import Cart from "./components/Cart";
 import CheckoutForm from "./components/CheckoutForm";
 import { CartProvider } from "./context/CartContext";
+import "./index.css";
 
 function App() {
   return (

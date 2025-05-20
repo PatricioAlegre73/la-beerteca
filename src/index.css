@@ -1,31 +1,104 @@
-/* Cuerpo y fondo */
+/* === FUENTES === */
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@600&family=Merriweather&display=swap');
+
+/* === BASE === */
 body {
-  font-family: 'Merriweather', serif; /* Más elegante */
-  background-color: #f4f1ec; /* color crema suave */
-  color: #3e2f1c; /* marrón oscuro, legible */
   margin: 0;
-  padding: 20px;
+  font-family: 'Merriweather', serif;
+  background-color: #f4f1ec; /* crema suave */
+  color: #3e2f1c; /* marrón oscuro */
+  padding: 0;
 }
 
-/* Enlaces */
+/* === ENCABEZADOS === */
+h1, h2, h3 {
+  font-family: 'Bitter', serif;
+  color: #8b5e3c;
+}
+
+/* === ENLACES === */
 a {
-  color: #8b5e3c; /* marrón cerveza */
+  color: #8b5e3c;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 a:hover {
-  color: #d1a76c; /* color más claro para hover */
+  color: #d1a76c;
   text-decoration: underline;
 }
 
-/* Inputs */
+/* === NAVBAR / HEADER === */
+header {
+  background-color: #4e342e; /* marrón oscuro */
+  color: #fff8f0;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-link {
+  color: #fff8f0;
+  text-decoration: none;
+  margin: 0 1rem;
+  font-weight: bold;
+  font-family: 'Bitter', serif;
+}
+
+.nav-link:hover {
+  color: #d1a76c;
+  text-decoration: underline;
+}
+
+/* === BOTONES === */
+button, .button {
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: #8b5e3c;
+  color: #fff8f0;
+  font-family: 'Bitter', serif;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover, .button:hover {
+  background-color: #a36f47;
+}
+
+/* === TARJETAS DE PRODUCTO === */
+.card {
+  background-color: #fff8f0;
+  border: 1px solid #d1a76c;
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 0 4px 8px rgba(78, 52, 46, 0.15);
+  text-align: center;
+  max-width: 280px;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card img {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* === FORMULARIOS === */
 input {
   display: block;
   margin-bottom: 15px;
-  padding: 10px 15px;
+  padding: 10px;
   width: 100%;
-  max-width: 300px;
+  max-width: 350px;
   border: 2px solid #d1a76c;
   border-radius: 5px;
   font-size: 1rem;
@@ -40,36 +113,6 @@ input:focus {
   background-color: #fff8f0;
 }
 
-/* Botones */
-button {
-  cursor: pointer;
-  padding: 10px 20px;
-  background-color: #8b5e3c;
-  border: none;
-  border-radius: 5px;
-  font-family: 'Bitter', serif;
-  color: #fff8f0;
-  font-weight: bold;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #a36f47;
-}
-
-/* Contenedores de formulario */
-.form-container {
-  background-color: #fff8f0;
-  border: 2px solid #d1a76c;
-  border-radius: 10px;
-  padding: 20px;
-  max-width: 350px;
-  box-shadow: 0 4px 8px rgba(60, 40, 20, 0.2);
-  margin: 20px auto;
-}
-
-/* Etiquetas */
 label {
   font-family: 'Bitter', serif;
   font-weight: 700;
@@ -78,25 +121,47 @@ label {
   color: #5e3c17;
 }
 
-/* Mensajes de error o éxito */
+/* === MENSAJES === */
 .message {
   font-family: 'Merriweather', serif;
   font-size: 0.9rem;
   margin-top: 5px;
-  color: #d9534f; /* rojo suave para error */
+  color: #d9534f;
 }
 
 .message.success {
-  color: #5cb85c; /* verde para éxito */
+  color: #5cb85c;
 }
 
-/* Para un diseño responsive simple */
-@media (max-width: 400px) {
-  .form-container {
-    padding: 15px;
+/* === CONTENEDORES Y LISTAS === */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.item-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-link {
+    margin: 0.5rem 0;
+  }
+
+  .card {
     max-width: 100%;
   }
-  
+
   input, button {
     width: 100%;
   }

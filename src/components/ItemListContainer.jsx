@@ -5,40 +5,39 @@ import { db } from "../firebase/config";
 import ItemList from "./ItemList";
 
 function ItemListContainer() {
-  const { categoryId } = useParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { categoryId } = useParams();
 
   useEffect(() => {
     setLoading(true);
 
-    const productsRef = collection(db, "items");
-
+    const itemsCollection = collection(db, "items");
     const q = categoryId
-      ? query(productsRef, where("category", "==", categoryId))
-      : productsRef;
+      ? query(itemsCollection, where("category", "==", categoryId))
+      : itemsCollection;
 
     getDocs(q)
-      .then((snapshot) => {
-        const productsData = snapshot.docs.map(doc => ({
+      .then((res) => {
+        const items = res.docs.map((doc) => ({
           id: doc.id,
-          ...doc.data()
+          ...doc.data(),
         }));
-        setProducts(productsData);
+        setProducts(items);
       })
       .catch((error) => {
-        console.error("Error loading products: ", error);
+        console.error("Error cargando productos:", error);
       })
       .finally(() => setLoading(false));
   }, [categoryId]);
 
   if (loading) return <h2>Cargando productos...</h2>;
+  if (products.length === 0) return <h2>No hay productos en esta categoría.</h2>;
 
   return (
-    <>
-      <h2>{categoryId ? `Categoría: ${categoryId}` : "Todos los productos"}</h2>
+    <div style={{ padding: 20 }}>
       <ItemList products={products} />
-    </>
+    </div>
   );
 }
 

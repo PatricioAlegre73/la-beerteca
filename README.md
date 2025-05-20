@@ -1,12 +1,50 @@
-# React + Vite
+# 🍺 La Beerteca
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**La Beerteca** es una tienda online de cervezas desarrollada como proyecto académico usando React. Ofrece una experiencia completa de e-commerce con navegación SPA, gestión de carrito, filtrado por categorías, detalle de productos y generación de órdenes utilizando Firebase Firestore.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tecnologías utilizadas
 
-## Expanding the ESLint configuration
+- ⚛️ React (Vite)
+- 🔄 React Router DOM
+- 📦 Context API (manejo de carrito)
+- 🔥 Firebase (Firestore)
+- 💅 CSS personalizado con temática cervecera
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📂 Estructura del Proyecto
+
+
+---
+
+## 🧠 Funcionalidades principales
+
+### 🧭 Navegación SPA
+- Rutas amigables con `react-router-dom`.
+- Páginas:
+  - `/`: Inicio con listado de cervezas.
+  - `/category/:categoryId`: Filtrado por categoría.
+  - `/item/:itemId`: Detalle de producto.
+  - `/cart`: Carrito de compras.
+  - `/checkout`: Formulario de orden.
+
+### 🛒 Carrito de compras
+- Agregar, quitar o vaciar productos.
+- Visualización y resumen del carrito.
+
+### 🔍 Detalle y filtrado de productos
+- Filtrado por categoría desde Firebase.
+- Vista individual de cada cerveza con imagen, stock y descripción.
+
+### 🔥 Integración con Firebase
+- Productos y órdenes almacenados en Firestore.
+- Generación de ID de compra en checkout.
+
+### 🎨 Estilo visual cervecero
+- Diseño rústico y cálido con colores dorados y marrones.
+- Tipografías claras y layout responsivo.
+
+---
+
